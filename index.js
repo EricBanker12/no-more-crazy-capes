@@ -13,19 +13,19 @@ module.exports = function noMoreCrazyCapes(dispatch) {
 	// update appearance when someone is loaded
 	dispatch.hook('S_SPAWN_USER', 3, event => {
 		// if character is your character
-		if (event.id.equals(cid)) {
+		if (event.cid.equals(cid)) {
 			//do nothing
 		}
 		// if someone else
 		else {
 			// if timer was set, end it
-			if (timeouts[event.id]) {
-					clearTimeout(timeouts[event.id])
-					timeouts[event.id] = false
+			if (timeouts[event.cid]) {
+					clearTimeout(timeouts[event.cid])
+					timeouts[event.cid] = false
 			}
 			// if using back costume, set timer to re-equip it
 			if (event.back != 0) {
-				timeouts[event.id] = setTimeout(refresh_appearance, 3000, event)
+				timeouts[event.cid] = setTimeout(refresh_appearance, 3000, event)
 			}
 		}
 	})
