@@ -38,10 +38,8 @@ module.exports = function noMoreCrazyCapes(dispatch) {
 		}
 		// if someone else
 		else {
-			console.log('this is NOT your character')
 			// if timer was set, end it
 			if (timeouts[event.id]) {
-					console.log('end timer')
 					clearTimeout(timeouts[event.id])
 					timeouts[event.id] = false
 			}
