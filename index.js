@@ -6,8 +6,8 @@ module.exports = function noMoreCrazyCapes(dispatch) {
     timeouts = {}
     
     // find your character ID on login
-    dispatch.hook('S_LOGIN', 2, event => {
-        cid = event.cid
+    dispatch.hook('S_LOGIN', 9, event => {
+        cid = event.gameId
     })
     
     // update appearance when someone is loaded
