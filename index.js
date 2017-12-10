@@ -2,53 +2,39 @@
 module.exports = function noMoreCrazyCapes(dispatch) {
     
     // variables
-    let cid = null,
+    let gameId = null,
     timeouts = {}
     
-    // find your character ID on login
+    // find gameID on login
     dispatch.hook('S_LOGIN', 9, event => {
-        cid = event.gameId
+        gameId = event.gameId
     })
     
-    // update appearance when someone is loaded
-    dispatch.hook('S_SPAWN_USER', 3, event => {
-        // if character is your character
-        if (event.cid.equals(cid)) {
-            //do nothing
-        }
-        // if someone else
-        else {
-            // if timer was set, end it
-            if (timeouts[event.cid]) {
-                    clearTimeout(timeouts[event.cid])
-                    timeouts[event.cid] = false
-            }
-            // if using back costume, set timer to re-equip it
-            if (event.back != 0) {
-                timeouts[event.cid] = setTimeout(refresh_appearance, 3000, event)
-            }
-        }
+    // when someone is loaded
+    dispatch.hook('S_SPAWN_USER', 11, event => {
+        check_appearance(event)
     })
     
-    // update appearance when someone's equipment changes
+    // when someone's equipment changes
     dispatch.hook('S_USER_EXTERNAL_CHANGE', 4, event => {
-        // if character is your character
-        if (event.gameId.equals(cid)) {
-            //do nothing
-        }
-        // if someone else
-        else {
+       check_appearance(event)
+    })
+	
+	// check_appearance
+	function check_appearance(event) {
+		// if character is not your character
+        if (!event.gameId.equals(gameId)) {
             // if timer was set, end it
             if (timeouts[event.gameId]) {
-                    clearTimeout(timeouts[event.id])
-                    timeouts[event.id] = false
+                    clearTimeout(timeouts[event.gameId])
+                    timeouts[event.gameId] = false
             }
             // if using back costume, set timer to re-equip it
             if (event.styleBack != 0) {
-                timeouts[event.id] = setTimeout(refresh_appearance, 3000, event)
+                timeouts[event.gameId] = setTimeout(refresh_appearance, 3000, event)
             }
         }
-    })
+	}
     
     // reapply the external appearance
     function refresh_appearance(event) {
