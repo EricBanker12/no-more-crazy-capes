@@ -19,10 +19,10 @@ module.exports = function noMoreCrazyCapes(dispatch) {
     dispatch.hook('S_USER_EXTERNAL_CHANGE', 4, event => {
        check_appearance(event)
     })
-	
-	// check_appearance
-	function check_appearance(event) {
-		// if character is not your character
+
+    // check_appearance
+    function check_appearance(event) {
+        // if character is not your character
         if (!event.gameId.equals(gameId)) {
             // if timer was set, end it
             if (timeouts[event.gameId]) {
@@ -34,7 +34,7 @@ module.exports = function noMoreCrazyCapes(dispatch) {
                 timeouts[event.gameId] = setTimeout(refresh_appearance, 3000, event)
             }
         }
-	}
+    }
     
     // reapply the external appearance
     function refresh_appearance(event) {
