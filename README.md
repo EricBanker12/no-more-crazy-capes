@@ -4,6 +4,9 @@ Tera-Proxy module for Tera Online. Fixes cape exploding physics glitch by re-equ
 [Tera-Proxy](https://github.com/meishuu/tera-proxy) and dependencies
 
 The following opcodes must be mapped in your `tera-proxy/node_modules/tera-data/map/protocol.{version}.map` file:
-* S_LOGIN
-* S_SPAWN_USER
-* S_USER_EXTERNAL_CHANGE
+
+|         Opcode         | Required version |
+| ---------------------- | ---------------- |
+|        S_LOGIN         |        9         |
+|      S_SPAWN_USER      |        11        |
+| S_USER_EXTERNAL_CHANGE |        4         |
