@@ -44,7 +44,7 @@ module.exports = function noMoreCrazyCapes(dispatch) {
                     timeouts[event.id] = false
             }
             // if using back costume, set timer to re-equip it
-            if (event.back != 0) {
+            if (event.styleBack != 0) {
                 timeouts[event.id] = setTimeout(refresh_appearance, 3000, event)
             }
         }
