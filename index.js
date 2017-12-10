@@ -31,7 +31,7 @@ module.exports = function noMoreCrazyCapes(dispatch) {
     })
     
     // update appearance when someone's equipment changes
-    dispatch.hook('S_USER_EXTERNAL_CHANGE', 1, event => {
+    dispatch.hook('S_USER_EXTERNAL_CHANGE', 4, event => {
         // if character is your character
         if (event.id.equals(cid)) {
             //do nothing
