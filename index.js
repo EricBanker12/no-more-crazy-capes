@@ -39,7 +39,7 @@ module.exports = function noMoreCrazyCapes(dispatch) {
         // if someone else
         else {
             // if timer was set, end it
-            if (timeouts[event.id]) {
+            if (timeouts[event.gameId]) {
                     clearTimeout(timeouts[event.id])
                     timeouts[event.id] = false
             }
