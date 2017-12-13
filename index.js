@@ -39,6 +39,6 @@ module.exports = function noMoreCrazyCapes(dispatch) {
     // reapply the external appearance
     function refresh_appearance(event) {
         timeouts[event.id] = false
-        dispatch.toClient('S_USER_EXTERNAL_CHANGE', 1, event)
+        dispatch.toClient('S_USER_EXTERNAL_CHANGE', 4, event)
     }
 }
