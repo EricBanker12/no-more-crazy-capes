@@ -10,12 +10,10 @@ module.exports = function noMoreCrazyCapes(dispatch) {
         gameId = event.gameId
     })
     
-    /*
     // when someone is loaded
     dispatch.hook('S_SPAWN_USER', 11, event => {
         check_appearance(event)
     })
-    */
     
     // when someone's equipment changes
     dispatch.hook('S_USER_EXTERNAL_CHANGE', 4, event => {
@@ -41,6 +39,37 @@ module.exports = function noMoreCrazyCapes(dispatch) {
     // reapply the external appearance
     function refresh_appearance(event) {
         timeouts[event.id] = false
-        dispatch.toClient('S_USER_EXTERNAL_CHANGE', 4, event)
+        let appearance = {
+            gameId,
+            weapon,
+            body,
+            hand,
+            feet,
+            underwear,
+            head,
+            face,
+            weaponModel,
+            bodyModel,
+            handModel,
+            feetModel,
+            weaponDye,
+            bodyDye,
+            handDye,
+            feetDye,
+            underwearDye,
+            styleBackDye,
+            styleHeadDye,
+            styleFaceDye,
+            weaponEnchant,
+            styleHead,
+            styleFace,
+            styleBack,
+            styleWeapon,
+            styleBody,
+            styleFootprint,
+            styleBodyDye,
+            showStyle
+        } = event
+        dispatch.toClient('S_USER_EXTERNAL_CHANGE', 4, appearance)
     }
 }
