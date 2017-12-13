@@ -10,10 +10,12 @@ module.exports = function noMoreCrazyCapes(dispatch) {
         gameId = event.gameId
     })
     
+    /*
     // when someone is loaded
     dispatch.hook('S_SPAWN_USER', 11, event => {
         check_appearance(event)
     })
+    */
     
     // when someone's equipment changes
     dispatch.hook('S_USER_EXTERNAL_CHANGE', 4, event => {
