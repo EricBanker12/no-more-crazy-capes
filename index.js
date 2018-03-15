@@ -103,6 +103,6 @@ module.exports = function noMoreCrazyCapes(dispatch) {
             styleBodyDye,
             showStyle
         } = event
-        dispatch.toClient('S_USER_EXTERNAL_CHANGE', 4, appearance)
+        dispatch.toClient('S_USER_EXTERNAL_CHANGE', 5, appearance)
     }
 }
