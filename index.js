@@ -25,7 +25,7 @@ module.exports = function noMoreCrazyCapes(dispatch) {
     // check_appearance
     function check_appearance(event) {
         // if character is not your character
-        if (!event.gameId.equals(gameId)) {
+        if (!event.gameId == gameId) {
             // if timer was set, end it
             if (timeouts[event.gameId]) {
                     clearTimeout(timeouts[event.gameId])
