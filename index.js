@@ -5,11 +5,12 @@ module.exports = function noMoreCrazyCapes(dispatch) {
     
     // variables
     let gameId = null,
-        timeouts = {}
+        timeouts = new Map()
     
     // find gameID on login
     dispatch.hook('S_LOGIN', 10, event => {
         gameId = event.gameId
+        clearAllTimeouts()
     })
     
     // when someone is loaded
@@ -22,25 +23,38 @@ module.exports = function noMoreCrazyCapes(dispatch) {
        check_appearance(event)
     })
 
+    // S_LOAD_TOPO
+    dispatch.hook('S_LOAD_TOPO', 'raw', clearAllTimeouts)
+
+    // S_RETURN_TO_LOBBY
+    dispatch.hook('S_RETURN_TO_LOBBY', 'raw', clearAllTimeouts)
+
+    // clearAllTimeouts
+    function clearAllTimeouts() {
+        timeouts.forEach((value)=>{clearTimeout(value)})
+        timeouts =  new Map()
+    }
+
     // check_appearance
     function check_appearance(event) {
         // if character is not your character
         if (event.gameId != gameId) {
             // if timer was set, end it
-            if (timeouts[event.gameId]) {
-                    clearTimeout(timeouts[event.gameId])
-                    timeouts[event.gameId] = false
+            let value = timeouts.get(event.gameId)
+            if (value) {
+                    clearTimeout(value)
+                    timeouts.delete(event.gameId)
             }
             // if using back costume, set timer to re-equip it
             if (event.styleBack != 0) {
-                timeouts[event.gameId] = setTimeout(refresh_appearance, timeout, event)
+                timeouts.set(event.gameId, setTimeout(refresh_appearance, timeout, event))
             }
         }
     }
     
     // reapply the external appearance
     function refresh_appearance(event) {
-        timeouts[event.id] = false
+        timeouts.delete(event.gameId)
         let appearance = {
             gameId,
             weapon,
