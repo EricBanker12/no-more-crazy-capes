@@ -14,14 +14,10 @@ module.exports = function noMoreCrazyCapes(dispatch) {
     })
     
     // when someone is loaded
-    dispatch.hook('S_SPAWN_USER', 13, event => {
-        check_appearance(event)
-    })
+    dispatch.hook('S_SPAWN_USER', 13, check_appearance)
     
     // when someone's equipment changes
-    dispatch.hook('S_USER_EXTERNAL_CHANGE', 6, event => {
-       check_appearance(event)
-    })
+    dispatch.hook('S_USER_EXTERNAL_CHANGE', 6, check_appearance)
 
     // S_LOAD_TOPO
     dispatch.hook('S_LOAD_TOPO', 'raw', clearAllTimeouts)
@@ -55,13 +51,6 @@ module.exports = function noMoreCrazyCapes(dispatch) {
     // reapply the external appearance
     function refresh_appearance(event) {
         timeouts.delete(event.gameId)
-        /*
-        let data = ["gameId","weapon","body","hand","feet","underwear","head","face","weaponModel","bodyModel","handModel","feetModel","weaponDye","bodyDye","handDye","feetDye","underwearDye","styleBackDye","styleHeadDye","styleFaceDye","weaponEnchant","styleHead","styleFace","styleBack","styleWeapon","styleBody","styleFootprint","styleHeadScale","styleHeadRotation","styleHeadTranslation","styleHeadTranslationDebug","styleFaceScale","styleFaceRotation","styleFaceTranslation","styleFaceTranslationDebug","styleBackScale","styleBackRotation","styleBackTranslation","styleBackTranslationDebug","accessoryTransformUnk","styleBodyDye","showStyle"]
-        let appearance = {}
-        for (let v of data) {
-            appearance[v] = event[v]
-        }
-        */
         dispatch.toClient('S_USER_EXTERNAL_CHANGE', 6, event)
     }
 }
