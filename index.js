@@ -8,16 +8,16 @@ module.exports = function noMoreCrazyCapes(dispatch) {
         timeouts = new Map()
     
     // find gameID on login
-    dispatch.hook('S_LOGIN', 10, event => {
+    dispatch.hook('S_LOGIN', 12, event => {
         gameId = event.gameId
         clearAllTimeouts()
     })
     
     // when someone is loaded
-    dispatch.hook('S_SPAWN_USER', 13, check_appearance)
+    dispatch.hook('S_SPAWN_USER', 14, check_appearance)
     
     // when someone's equipment changes
-    dispatch.hook('S_USER_EXTERNAL_CHANGE', 6, check_appearance)
+    dispatch.hook('S_USER_EXTERNAL_CHANGE', 7, check_appearance)
 
     // S_LOAD_TOPO
     dispatch.hook('S_LOAD_TOPO', 'raw', clearAllTimeouts)
@@ -51,6 +51,6 @@ module.exports = function noMoreCrazyCapes(dispatch) {
     // reapply the external appearance
     function refresh_appearance(event) {
         timeouts.delete(event.gameId)
-        dispatch.toClient('S_USER_EXTERNAL_CHANGE', 6, event)
+        dispatch.toClient('S_USER_EXTERNAL_CHANGE', 7, event)
     }
 }

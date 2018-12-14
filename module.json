@@ -1,5 +1,8 @@
 {
-	"disableAutoUpdate": false,
-	"servers": ["https://raw.githubusercontent.com/Mister-Kay/no-more-crazy-capes/master/"],
-	"supportUrl": "https://github.com/Mister-Kay/no-more-crazy-capes/issues"
+    "disableAutoUpdate": false,
+    "servers": ["https://raw.githubusercontent.com/Mister-Kay/no-more-crazy-capes/master/"],
+    "supportUrl": "https://github.com/Mister-Kay/no-more-crazy-capes/issues",
+    "name": "no-more-crazy-capes",
+    "author": "Mister-Kay",
+    "description": "Fixes cape exploding physics glitch by re-equipping back items of other players 3 seconds after they load/change equipment."
 }
