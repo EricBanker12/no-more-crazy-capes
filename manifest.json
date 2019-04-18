@@ -2,12 +2,12 @@
     "files": {
         "LICENSE": "589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2",
         "README.md": "ce82066af8840b7a563b0bff373312e3521909d36bd2cca470c87241aaec16c8",
-        "index.js": "c59dd25cca11ce75f6ade3bc16b87e280c664c8cb1abfc4f172de69c44d21772",
+        "index.js": "a498b1d034d4afe11112b9f77a69f77a9124fc878b9d2f3b687e4ed719843dfd",
         "module.json": "f76d547ac25284093fb6b6cce6548f7506aa0f20b3353777aec3944979403947"
     },
     "defs": {
         "S_LOAD_TOPO": "raw",
-        "S_LOGIN": 12,
+        "S_LOGIN": [12,13],
         "S_RETURN_TO_LOBBY": "raw",
         "S_SPAWN_USER": 14,
         "S_USER_EXTERNAL_CHANGE": 7
