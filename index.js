@@ -8,7 +8,7 @@ module.exports = function noMoreCrazyCapes(dispatch) {
         timeouts = new Map()
     
     // find gameID on login
-    dispatch.hook('S_LOGIN', dispatch.majorPatchVersion >= 81 ? 13 : 12, event => {
+    dispatch.hook('S_LOGIN', 13, event => {
         gameId = event.gameId
         clearAllTimeouts()
     })
