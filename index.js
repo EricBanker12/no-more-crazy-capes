@@ -14,7 +14,7 @@ module.exports = function noMoreCrazyCapes(dispatch) {
     })
     
     // when someone is loaded
-    dispatch.hook('S_SPAWN_USER', 14, check_appearance)
+    dispatch.hook('S_SPAWN_USER', 15, check_appearance)
     
     // when someone's equipment changes
     dispatch.hook('S_USER_EXTERNAL_CHANGE', 7, check_appearance)
